@@ -1,2 +1,3 @@
-# couchbase-jruby-client
-couchbase-jruby-client
+# jruby-couchbase
+
+JRuby wrapper of the Couchbase Java SDK.

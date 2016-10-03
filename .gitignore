@@ -1,0 +1,11 @@
+*.gem
+Gemfile.lock
+.bundle
+vendor/
+# SO
+.DS_Store
+.mvn/
+Jars.lock
+lib/com/*
+lib/io/*
+lib/org/*

@@ -11,7 +11,7 @@ Gem::Specification.new do |gem|
   gem.platform = "java"
 
   # Files
-  gem.files = Dir['lib/**/*','spec/**/*', 'vendor/**/*', '*.gemspec','*.md','Gemfile', 'Rakefile']
+  gem.files = Dir['lib/**/*','spec/**/*', 'vendor/**/*', '*.gemspec','*.md','Gemfile']
 
   # Tests
   gem.test_files = gem.files.grep(%r{^(test|spec|features)/})

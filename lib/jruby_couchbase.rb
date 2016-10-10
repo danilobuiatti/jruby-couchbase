@@ -4,6 +4,7 @@ require "multi_json"
 
 java_import com.couchbase.client.java.CouchbaseCluster
 java_import com.couchbase.client.java.document.RawJsonDocument
+java_import com.couchbase.client.java.document.json.JsonArray
 java_import com.couchbase.client.java.view.ViewQuery
 
 class Couchbase
@@ -21,6 +22,11 @@ class Couchbase
 
   def query(query, view)
     view_query = ViewQuery.from(query, view)
+    transform_view_result(@connected_bucket.query(view_query))
+  end
+
+  def query_with_keys(query, view, keys)
+    view_query = ViewQuery.from(query, view).keys(JsonArray.from(keys.to_java))
     transform_view_result(@connected_bucket.query(view_query))
   end
 

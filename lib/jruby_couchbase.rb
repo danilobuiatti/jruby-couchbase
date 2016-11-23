@@ -6,12 +6,15 @@ java_import com.couchbase.client.java.CouchbaseCluster
 java_import com.couchbase.client.java.document.RawJsonDocument
 java_import com.couchbase.client.java.document.json.JsonArray
 java_import com.couchbase.client.java.view.ViewQuery
+java_import com.couchbase.client.java.env.DefaultCouchbaseEnvironment
+java_import java.util.concurrent.TimeUnit
 
 class Couchbase
 
-  def initialize(cluster, bucket, bucket_password)
-    @connected_cluster = CouchbaseCluster.create(cluster)
-    @connected_bucket = @connected_cluster.openBucket(bucket, bucket_password)
+  def initialize(cluster, bucket, bucket_password, connect_timeout_ms = 5000, open_bucket_timeout_ms = 5000)
+    env = DefaultCouchbaseEnvironment.builder().connectTimeout(connect_timeout_ms).build()
+    @connected_cluster = CouchbaseCluster.create(env, cluster)
+    @connected_bucket = @connected_cluster.openBucket(bucket, bucket_password, open_bucket_timeout_ms, TimeUnit::MILLISECONDS)
   end
 
   def get_document(key)

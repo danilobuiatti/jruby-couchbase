@@ -1,7 +1,7 @@
 Gem::Specification.new do |gem|
 
   gem.name = "jruby-couchbase"
-  gem.version = "1.0.2"
+  gem.version = "1.1.0"
   gem.authors = ["ZUP"]
   gem.email = ["rodrigo.saramago@zup.com.br"]
   gem.description = %q{JRuby wrapper to Couchbase Java SDK}

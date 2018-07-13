@@ -20,11 +20,11 @@ Gem::Specification.new do |gem|
   gem.requirements << "jar 'com.couchbase.client:java-client', '2.6.0'"
   gem.requirements << "jar 'com.couchbase.client:encryption', '1.0.0'"
 
-  gem.add_runtime_dependency 'multi_json', '~> 1.13', '>= 1.13.1'
+  gem.add_runtime_dependency 'multi_json', '~> 1.13'
 
   gem.add_development_dependency "jar-dependencies", '~> 0.3.12'
-  gem.add_development_dependency 'ruby-maven', '~> 3.3', '>= 3.3.12'
-  gem.add_development_dependency 'rake', '~> 12.3.1'
-  gem.add_development_dependency 'rspec', '~> 3.7.0'
+  gem.add_development_dependency 'ruby-maven', '~> 3.3'
+  gem.add_development_dependency 'rake', '~> 12.3'
+  gem.add_development_dependency 'rspec', '~> 3.7'
 
 end

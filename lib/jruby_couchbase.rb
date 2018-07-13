@@ -11,10 +11,11 @@ java_import java.util.concurrent.TimeUnit
 
 class Couchbase
 
-  def initialize(cluster, bucket, bucket_password, connect_timeout_ms = 5000, open_bucket_timeout_ms = 5000)
-    env = DefaultCouchbaseEnvironment.builder().connectTimeout(connect_timeout_ms).build()
+  def initialize(cluster, credentials, bucket, timeouts = {})
+    env = DefaultCouchbaseEnvironment.builder().connect_timeout(timeouts[:connection] || 5000).build()
     @connected_cluster = CouchbaseCluster.create(env, cluster)
-    @connected_bucket = @connected_cluster.openBucket(bucket, bucket_password, open_bucket_timeout_ms, TimeUnit::MILLISECONDS)
+    @connected_cluster.authenticate(credentials[:username], credentials[:password])
+    @connected_bucket = @connected_cluster.open_bucket(bucket, timeouts[:open_bucket] || 5000, TimeUnit::MILLISECONDS)
   end
 
   def get_document(key)
@@ -28,8 +29,8 @@ class Couchbase
     transform_view_result(@connected_bucket.query(view_query))
   end
 
-  def query_with_keys(query, view, keys)
-    view_query = ViewQuery.from(query, view).keys(JsonArray.from(keys.to_java))
+  def query_with_keys(design, view, keys)
+    view_query = ViewQuery.from(design, view).keys(JsonArray.from(keys.to_java))
     transform_view_result(@connected_bucket.query(view_query))
   end
 

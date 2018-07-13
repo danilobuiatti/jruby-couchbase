@@ -1,7 +1,7 @@
 Gem::Specification.new do |gem|
 
   gem.name = "jruby-couchbase"
-  gem.version = "1.1.0"
+  gem.version = "2.0.0"
   gem.authors = ["ZUP"]
   gem.email = ["rodrigo.saramago@zup.com.br"]
   gem.description = %q{JRuby wrapper to Couchbase Java SDK}
@@ -17,13 +17,14 @@ Gem::Specification.new do |gem|
   gem.test_files = gem.files.grep(%r{^(test|spec|features)/})
 
   # Gem dependencies
-  gem.requirements << "jar 'com.couchbase.client:java-client', '2.3.1'"
+  gem.requirements << "jar 'com.couchbase.client:java-client', '2.6.0'"
+  gem.requirements << "jar 'com.couchbase.client:encryption', '1.0.0'"
 
-  gem.add_runtime_dependency 'multi_json', '~> 1.12', '>= 1.12.1'
+  gem.add_runtime_dependency 'multi_json', '~> 1.13'
 
-  gem.add_development_dependency "jar-dependencies", '~> 0.3.2'
-  gem.add_development_dependency 'ruby-maven', '~> 3.3', '>= 3.3.11'
-  gem.add_development_dependency 'rake', '~> 11.3'
-  gem.add_development_dependency 'rspec', '~> 3.5'
+  gem.add_development_dependency "jar-dependencies", '~> 0.3.12'
+  gem.add_development_dependency 'ruby-maven', '~> 3.3'
+  gem.add_development_dependency 'rake', '~> 12.3'
+  gem.add_development_dependency 'rspec', '~> 3.7'
 
 end
